@@ -8,6 +8,7 @@ const daysElem = document.querySelector('[data-days]');
 const hoursElem = document.querySelector('[data-hours]');
 const minutesElem = document.querySelector('[data-minutes]');
 const secondsElem = document.querySelector('[data-seconds]');
+let interval = null;
 
 const options = {
   enableTime: true,
@@ -30,7 +31,6 @@ function convertMs(ms) {
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
-  let interval = null;
 
   // Remaining days
   const days = Math.floor(ms / day);
@@ -63,5 +63,7 @@ function count() {
     hoursElem.textContent = counted.hours;
     minutesElem.textContent = counted.minutes;
     secondsElem.textContent = counted.seconds;
+  } else {
+    clearInterval(interval);
   }
 }
